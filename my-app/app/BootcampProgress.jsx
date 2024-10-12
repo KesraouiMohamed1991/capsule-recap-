@@ -4,6 +4,7 @@ import MyData from './data/data';
 import Link from 'next/link';
 import ThemeToggle from './helpers/ThemeToggle';
 import AnimatedText from './helpers/AnimatedText';
+
 const BootcampProgress = () => {
   const startDate = new Date("Oct 14, 2024");
   const endDate = new Date("Dec 20, 2024");
@@ -89,11 +90,9 @@ const BootcampProgress = () => {
       <footer className="text-center">
         <p>Copyright &copy; {new Date().getFullYear()} - 
           <Link target="_blank" href="https://kesraouicreative.com">
-            Kesraoui mohamed
+            Kesraoui Mohamed
           </Link>
         </p>
-
-
       </footer>
     </div>
   );
