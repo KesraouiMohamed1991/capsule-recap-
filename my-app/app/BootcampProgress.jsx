@@ -4,7 +4,7 @@ import MyData from './data/data';
 
 const BootcampProgress = () => {
 
-  const startDate = new Date("Oct 1, 2024");
+  const startDate = new Date("Oct 14, 2024");
   const endDate = new Date("Dec 20, 2024");
   const totalWorkDays = 50;
   const [currentDay, setCurrentDay] = useState(0);
