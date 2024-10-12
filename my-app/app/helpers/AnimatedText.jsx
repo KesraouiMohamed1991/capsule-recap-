@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 
-const AnimatedText = ({ text, size='text-3xl' }) => {
+const AnimatedText = ({ text, size = 'text-3xl' }) => {
   const originalText = text;
   const [displayedText, setDisplayedText] = useState(originalText);
   const [isHovering, setIsHovering] = useState(false);
@@ -13,7 +13,9 @@ const AnimatedText = ({ text, size='text-3xl' }) => {
       // Change one letter at a time
       const newText = displayedText.split('').map((char, index) => {
         // Replace the character with a random character if it's before the current index
-        return index < currentIndex ? String.fromCharCode(Math.random() * (126 - 33) + 33) : char;
+        return index < currentIndex
+          ? String.fromCharCode(Math.floor(Math.random() * (126 - 33) + 33)) // Random ASCII between 33 and 126
+          : char;
       }).join('');
 
       setDisplayedText(newText);
@@ -25,21 +27,19 @@ const AnimatedText = ({ text, size='text-3xl' }) => {
         setDisplayedText(originalText); // Reset to original text after animation
         setIsHovering(false);
       }
-    }, 10); // Change this value for speed
+    }, 100); // Adjust speed of animation here
   };
 
-
-
-    useEffect(() => {
-    handleMouseEnter(); // Trigger animation on component mount
-  }, []); // Empty dependency array means this runs once on mount
+  // Trigger animation on component mount
+  useEffect(() => {
+    handleMouseEnter();
+  }, []); // Empty dependency array to run once on mount
 
   return (
     <p
-      className={`${size}  my-8 ${isHovering ? 'cursor-pointer transition-transform' : ''}`}
+      className={`${size} my-8 ${isHovering ? 'cursor-pointer transition-transform' : ''}`}
       onMouseEnter={handleMouseEnter}
-      onLoad={handleMouseEnter}
-      onMouseLeave={() => setDisplayedText(originalText)} // Reset on mouse leave
+      onMouseLeave={() => setDisplayedText(originalText)} // Reset to original text on mouse leave
     >
       {displayedText}
     </p>
