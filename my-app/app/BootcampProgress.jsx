@@ -5,9 +5,9 @@ import Link from 'next/link';
 import ThemeToggle from './helpers/ThemeToggle';
 import AnimatedText from './helpers/AnimatedText';
 const BootcampProgress = () => {
-  const startDate = new Date("Oct 14, 2024");
+  const startDate = new Date("Oct 11, 2024");
   const endDate = new Date("Dec 20, 2024");
-  const totalWorkDays = 50;
+  const totalWorkDays = 47;
   const [currentDay, setCurrentDay] = useState(0);
 
   // Helper function to check if a day is a weekend
@@ -57,7 +57,7 @@ const BootcampProgress = () => {
   }, []); // Runs only once when the component is mounted
 
   // Get today's lessons based on currentDay
-  const todaysLessons = currentDay > 0 ? MyData[currentDay - 1]?.lessons || [] : []; // Adjusting for 0-indexing
+  const todaysLessons = currentDay > 0 ? MyData[currentDay - 1]?.lessons || [] : []; 
 
   return (
     <div id="progress" className='text-black dark:text-white h-screen flex flex-col text-sm justify-between p-4 bg-slate-50 dark:bg-gray-950'>
@@ -73,14 +73,14 @@ const BootcampProgress = () => {
       <h2 className="text-lg font-bold ">Bootcamp progress 📈:<span id="day-count">{currentDay}/{totalWorkDays}</span></h2>
 
       <div className=" my-4">
-        <h2 className="text-xl font-semibold mb-4">Le but du jour 📌<span className=' animate-ping'>:</span> </h2>
+        <h2 className="text-xl font-semibold mb-4">L'objectif du jour 📌<span className=' animate-ping'>:</span> </h2>
         <hr />
         {todaysLessons.length > 0 ? (
           todaysLessons.map((lesson, index) => (
             <p key={index} className="my-2">📂 {lesson.item}</p>
           ))
         ) : (
-          <p className="my-4"> ⚙️ Pas de cours pour aujourd’hui 💔!</p>
+          <p className="my-4"> 💤 Pas de cours pour aujourd’hui 💔!</p>
         )}
 
       <AnimatedText size='text-xl' text='Happy coding! 🏴‍☠️ '/>
