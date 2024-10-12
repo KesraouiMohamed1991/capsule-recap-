@@ -5,7 +5,7 @@ import Link from 'next/link';
 import ThemeToggle from './helpers/ThemeToggle';
 import AnimatedText from './helpers/AnimatedText';
 const BootcampProgress = () => {
-  const startDate = new Date("Oct 11, 2024");
+  const startDate = new Date("Oct 14, 2024");
   const endDate = new Date("Dec 20, 2024");
   const totalWorkDays = 47;
   const [currentDay, setCurrentDay] = useState(0);
