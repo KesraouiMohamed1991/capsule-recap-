@@ -1,4 +1,4 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
 
@@ -19,6 +19,12 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+
+## Dark Mode Support
+
+This project supports dark mode using [Tailwind CSS](https://tailwindcss.com/docs/dark-mode) utility classes. Users can toggle between light and dark themes. The current theme preference is saved in `localStorage`, ensuring the selected theme persists across page reloads.
+
+To toggle dark mode, use the toggle button in the header of the application.
 
 ## Learn More
 
