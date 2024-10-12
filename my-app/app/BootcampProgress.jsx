@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import MyData from './data/data';
 import Link from 'next/link';
 import ThemeToggle from './helpers/ThemeToggle';
@@ -25,7 +25,7 @@ const BootcampProgress = () => {
   }).format(new Date());
 
   // Calculate the current day in the bootcamp
-  const calculateCurrentDay = () => {
+  const calculateCurrentDay = useCallback(() => {
     const today = new Date();
 
     // If the bootcamp has not started yet
@@ -50,12 +50,12 @@ const BootcampProgress = () => {
     }
 
     return dayCount;
-  };
+  }, [startDate, endDate, totalWorkDays]); // Add dependencies here
 
   useEffect(() => {
     const day = calculateCurrentDay();
     setCurrentDay(day);
-  }, []); // Runs only once when the component is mounted
+  }, [calculateCurrentDay]); // Use the function as a dependency
 
   // Get today's lessons based on currentDay
   const todaysLessons = currentDay > 0 ? MyData[currentDay - 1]?.lessons || [] : []; 
@@ -73,8 +73,9 @@ const BootcampProgress = () => {
       <p className=" text-lg"> Bonjour Les Devs! 💻  </p>
       <h2 className="text-lg font-bold ">Bootcamp progress 📈:<span id="day-count">{currentDay}/{totalWorkDays}</span></h2>
 
-      <div className=" my-4">
-        <h2 className="text-xl font-semibold mb-4">L'objectif du jour 📌<span className=' animate-ping'>:</span> </h2>
+      <div className="my-4">
+        <p className="text-xl font-semibold mb-4">L&apos;objectif du jour 📌<span className='animate-ping'>:</span></p>
+
         <hr />
         {todaysLessons.length > 0 ? (
           todaysLessons.map((lesson, index) => (
@@ -84,7 +85,7 @@ const BootcampProgress = () => {
           <p className="my-4"> 💤 Pas de cours pour aujourd’hui 💔!</p>
         )}
 
-      <AnimatedText size='text-xl' text='Happy coding! 🏴‍☠️ '/>
+        <AnimatedText size='text-xl' text='Happy coding! 🏴‍☠️ '/>
       </div>
 
       <footer className="text-center">

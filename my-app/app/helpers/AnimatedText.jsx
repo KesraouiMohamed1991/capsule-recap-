@@ -9,10 +9,9 @@ const AnimatedText = ({ text, size = 'text-3xl' }) => {
   const handleMouseEnter = () => {
     setIsHovering(true);
     let currentIndex = 0;
+
     const interval = setInterval(() => {
-      // Change one letter at a time
       const newText = displayedText.split('').map((char, index) => {
-        // Replace the character with a random character if it's before the current index
         return index < currentIndex
           ? String.fromCharCode(Math.floor(Math.random() * (126 - 33) + 33)) // Random ASCII between 33 and 126
           : char;
@@ -27,13 +26,13 @@ const AnimatedText = ({ text, size = 'text-3xl' }) => {
         setDisplayedText(originalText); // Reset to original text after animation
         setIsHovering(false);
       }
-    }, 100); // Adjust speed of animation here
+    }, 60); // Adjust speed of animation here
   };
 
-  // Trigger animation on component mount
+  // Only set displayedText on mount
   useEffect(() => {
-    handleMouseEnter();
-  }, []); // Empty dependency array to run once on mount
+    setDisplayedText(originalText); // Ensure it's set on mount
+  }, [originalText]); // Include originalText in dependency array to reset on change
 
   return (
     <p
